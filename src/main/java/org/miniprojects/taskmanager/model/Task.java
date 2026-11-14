@@ -1,4 +1,4 @@
-package org.miniprojects.taskmanager;
+package org.miniprojects.taskmanager.model;
 
 public class Task{
     private final int taskId;

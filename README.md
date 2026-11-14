@@ -14,6 +14,8 @@ This project is for learning Java by building a working application incrementall
 - Remove a task.
 - Keep task data in memory while the application is running.
 
+Tasks are sorted when listed: incomplete tasks come before completed tasks, higher-priority tasks come first, and ties are ordered by task ID.
+
 ## Requirements and versions
 
 - Java 21 language/API target, configured with Maven's `maven.compiler.release` property.

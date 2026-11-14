@@ -4,8 +4,11 @@
 
 package org.miniprojects.taskmanager;
 
-import java.util.List;
 import java.util.Scanner;
+
+import org.miniprojects.taskmanager.manager.TaskManager;
+import org.miniprojects.taskmanager.model.Task;
+import org.miniprojects.taskmanager.model.TaskPriority;
 
 public class MiniTaskManager {
 
@@ -50,13 +53,12 @@ public class MiniTaskManager {
     }
 
     private static void showTasks(TaskManager taskManager) {
-        List<Task> tasks = taskManager.getTasks();
-        if (tasks.isEmpty()) {
+        if (!taskManager.iterator().hasNext()) {
             System.out.println("There are no tasks yet.");
             return;
         }
 
-        for (Task task : tasks) {
+        for (Task task : taskManager) {
             printTaskHeader(task);
         }
     }
@@ -154,7 +156,7 @@ public class MiniTaskManager {
         String input = scanner.nextLine().trim();
 
         try {
-            return Integer.parseInt(input);
+            return Integer.valueOf(input);
         } catch (NumberFormatException exception) {
             System.out.println("Please enter a valid numeric task ID.");
             return null;

@@ -1,11 +1,18 @@
-package org.miniprojects.taskmanager;
+package org.miniprojects.taskmanager.manager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
+
+import org.miniprojects.taskmanager.comparators.TaskComparator;
+import org.miniprojects.taskmanager.model.Task;
+import org.miniprojects.taskmanager.model.TaskPriority;
 
 
-public class TaskManager {
+public class TaskManager implements Iterable<Task>{
     private final Map<Integer, Task> tasks = new HashMap<>();
 
     public int addTask(String title, String descriptionString, TaskPriority priority){
@@ -42,6 +49,28 @@ public class TaskManager {
         Task task = getTask(taskID);
         tasks.remove(taskID);
         return task;
+    }
+
+    @Override
+    public Iterator<Task> iterator() {
+        List<Task> taskList = new ArrayList<>(tasks.values());
+        taskList.sort(new TaskComparator());
+
+        return new Iterator<Task>(){
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < taskList.size();
+            }
+            
+            @Override
+            public Task next(){
+                if (!hasNext())
+                    throw new NoSuchElementException();
+                return taskList.get(index++);
+            }
+        };
     }
 
 }
