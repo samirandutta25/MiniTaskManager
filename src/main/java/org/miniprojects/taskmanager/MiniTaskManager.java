@@ -4,7 +4,6 @@
 
 package org.miniprojects.taskmanager;
 
-import java.util.List;
 import java.util.Scanner;
 
 import org.miniprojects.taskmanager.manager.TaskManager;
@@ -54,13 +53,12 @@ public class MiniTaskManager {
     }
 
     private static void showTasks(TaskManager taskManager) {
-        List<Task> tasks = taskManager.getTasks();
-        if (tasks.isEmpty()) {
+        if (!taskManager.iterator().hasNext()) {
             System.out.println("There are no tasks yet.");
             return;
         }
 
-        for (Task task : tasks) {
+        for (Task task : taskManager) {
             printTaskHeader(task);
         }
     }
