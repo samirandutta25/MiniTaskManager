@@ -7,6 +7,10 @@ package org.miniprojects.taskmanager;
 import java.util.List;
 import java.util.Scanner;
 
+import org.miniprojects.taskmanager.manager.TaskManager;
+import org.miniprojects.taskmanager.model.Task;
+import org.miniprojects.taskmanager.model.TaskPriority;
+
 public class MiniTaskManager {
 
     public static void main(String[] args) {
@@ -154,7 +158,7 @@ public class MiniTaskManager {
         String input = scanner.nextLine().trim();
 
         try {
-            return Integer.parseInt(input);
+            return Integer.valueOf(input);
         } catch (NumberFormatException exception) {
             System.out.println("Please enter a valid numeric task ID.");
             return null;

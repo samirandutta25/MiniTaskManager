@@ -1,8 +1,10 @@
-package org.miniprojects.taskmanager;
+package org.miniprojects.taskmanager.manager;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.miniprojects.taskmanager.model.Task;
+import org.miniprojects.taskmanager.model.TaskPriority;
 
 
 public class TaskManager {
